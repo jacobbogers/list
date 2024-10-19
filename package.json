@@ -1,0 +1,50 @@
+{
+  "name": "@mangos/linked-list",
+  "version": "1.0.0",
+  "description": "single-linked-list",
+  "keywords": [
+    "list",
+    "linked list"
+  ],
+  "homepage": "https://github.com/jacobbogers/list",
+  "bugs": {
+    "url": "https://github.com/jacobbogers/list/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jacobbogers/list.git"
+  },
+  "license": "SEE LICENSE IN file ./LICENSE",
+  "author": "Jacob K.F. Bogers <jkfbogers@gmail.com>",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    "import": "./dist/esm/index.mjs",
+    "types": "./dist/types/index.d.ts"
+  },
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node --trace-warnings scripts/build.mjs",
+    "postbuild": "node --trace-warnings scripts/rollup.build.mjs",
+    "prepublishOnly": "npm run build",
+    "test": "jest --verbose"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@rollup/plugin-node-resolve": "15.3.0",
+    "@rollup/plugin-terser": "0.4.4",
+    "acorn": "8.13.0",
+    "escodegen": "2.1.0",
+    "rollup": "4.24.0",
+    "typescript": "5.6.3"
+  },
+  "engines": {
+    "node": ">=v20.4.0"
+  }
+}
