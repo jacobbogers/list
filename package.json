@@ -31,18 +31,20 @@
   ],
   "scripts": {
     "build": "node --trace-warnings scripts/build.mjs",
-    "postbuild": "node --trace-warnings scripts/rollup.build.mjs",
     "prepublishOnly": "npm run build",
-    "test": "jest --verbose"
+    "lint": "biome check --write src",
+    "test": "vitest"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@mangos/jxpath": "1.0.13",
     "@rollup/plugin-node-resolve": "15.3.0",
     "@rollup/plugin-terser": "0.4.4",
     "acorn": "8.13.0",
     "escodegen": "2.1.0",
     "rollup": "4.24.0",
-    "typescript": "5.6.3"
+    "typescript": "5.6.3",
+    "vitest": "2.1.3"
   },
   "engines": {
     "node": ">=v20.4.0"
