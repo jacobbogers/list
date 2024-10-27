@@ -78,3 +78,23 @@ export function toArr<T>(
 	}
 	return rc;
 }
+
+export function from<T>(value: T): Item<T> {
+	return { next: null, prev: null, value } as Item<T>;
+}
+
+export function value<T>(itm: Item<T>): T {
+	return itm.value;
+}
+
+export function snip<T>(item: Item<T> | List<T>): List<T> {
+	if (item === null) {
+		return null;
+	}
+	const temp = item?.prev;
+	item.prev = null;
+	if (temp) {
+		temp.next = null;
+	}
+	return item;
+}

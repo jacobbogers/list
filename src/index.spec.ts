@@ -3,11 +3,14 @@ import { describe, it } from "vitest";
 import {
 	type List,
 	first,
+	from,
 	insertAfter,
 	insertBefore,
 	last,
 	removeSelf,
+	snip,
 	toArr,
+	value,
 } from "./";
 
 describe("double linked list", () => {
@@ -141,10 +144,54 @@ describe("double linked list", () => {
 
 			expect(toArr(ref2)).toEqual([3, 8]);
 		});
+		it("create a list-item from value", ({ expect }) => {
+			const itm = from(8);
+			expect(itm).toEqual({ prev: null, next: null, value: 8 });
+		});
+		it("get value from a list item", ({ expect }) => {
+			const itm = from(8);
+			const v = value(itm);
+			expect(v).toBe(8);
+		});
+		it("snip, cut a list in 2", ({ expect }) => {
+			const obj1: List<number> = {
+				prev: null,
+				next: null,
+				value: 9,
+			};
+			const obj2: List<number> = {
+				prev: null,
+				next: null,
+				value: 3,
+			};
+			const obj3: List<number> = {
+				prev: null,
+				next: null,
+				value: 8,
+			};
+
+			const ref2 = insertAfter(null, obj2); // value order [3]
+			// [2]
+
+			const ref3 = insertAfter(ref2, obj3); // value order [3,8]
+			// [2] <--> [3]
+
+			const ref1 = insertAfter(ref2, obj1);
+			// [2] <--> [1] <--> [3]
+
+			// snip 1
+			const snip1 = snip(ref1);
+			// snip is [1] <--> [3]
+			expect(last(snip1)).toEqual(ref3);
+			expect(first(ref2)).toEqual(ref2);
+		});
 	});
 	describe("errors & edge cases", () => {
 		it("empty array count", ({ expect }) => {
 			expect(toArr(null)).toEqual([]);
+		});
+		it("snipp a null will return null", ({ expect }) => {
+			expect(snip(null)).toEqual(null);
 		});
 	});
 });
