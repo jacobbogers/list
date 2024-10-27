@@ -59,13 +59,19 @@ export function countFrom<T>(list: List<T>): number {
 	return cnt;
 }
 
-export function toArr<T>(list: List<T>): T[] {
+export function toArr<T>(
+	list: List<T>,
+	take: number = Number.POSITIVE_INFINITY,
+): T[] {
 	// get length;
+	if (list === null) {
+		return [];
+	}
 	const length = countFrom(list);
 	const rc = Array.from<T>({ length });
 	for (
 		let cursor: List<T> = list, cnt = 0;
-		cursor !== null;
+		cursor !== null && cnt < take;
 		cursor = cursor.next, cnt++
 	) {
 		rc[cnt] = cursor.value;

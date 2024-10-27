@@ -7,10 +7,10 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": [],
 		"include": [
 			"./src/**/*.ts",
-			"./scripts/**/*.mjs"
+			"./scripts/**/*.mjs",
+			"./vitest.config.js"
 		]
 	},
 	"formatter": {
