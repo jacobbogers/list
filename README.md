@@ -66,12 +66,31 @@ const item = from({ firstName:'John', lastName: 'Smith' });
 Exctracting a value from a list item:
 
 ```typescript
-const item = from({ firstName:'John', lastName: 'Smith' });
+const item = from({ firstName: 'John', lastName: 'Smith' });
 const actual = value(item);
 // -> will return reference to { firstName:'John', lastName: 'Smith' }
 ```
 
 ###  1.2. <a name='insertAfter'></a>`insertAfter`
+
+Add an element `item` right after the element pointed to by `list` (list is a superset of `item`)
+
+What is returned is the newly added `item` integrated into the list
+
+decl:
+```typescript
+function insertBefore<T>(list: List<T>, item: Item<T>): List<T>;
+```
+
+Example:
+```typescript
+  let root = from(1); // list with 1 element
+
+  const item2 = insertBefore(root, from(2));
+  // "2" will be inserted before "1"
+  
+  root = item2; // re-asign because variable list to the new root of the list
+```
 
 ###  1.3. <a name='insertBefore'></a>`insertBefore`
 
