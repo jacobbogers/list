@@ -89,7 +89,7 @@ Example:
   const item2 = insertBefore(root, from(2));
   // "2" will be inserted before "1"
   
-  root = item2; // re-asign because variable list to the new root of the list
+  root = item2; // re-asign variable list to the new root of the list
 ```
 
 ###  1.3. <a name='insertBefore'></a>`insertBefore`
