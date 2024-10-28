@@ -73,7 +73,7 @@ const actual = value(item);
 
 ###  1.2. <a name='insertAfter'></a>`insertAfter`
 
-Add an element `item` right after the element pointed to by `list` (list is a superset of `item`)
+Add an element `item` right after the element pointed to by `list` (`list` is a superset of `item`)
 
 What is returned is the newly added `item` integrated into the list
 
