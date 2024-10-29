@@ -17,7 +17,7 @@ npm i @mangos/list
 	* 1.3. [`insertBefore`](#insertBefore)
 	* 1.4. [`first`](#first)
 	* 1.5. [`last`](#last)
-	* 1.6. [`count`](#count)
+	* 1.6. [`countFrom`](#countFrom)
 	* 1.7. [`split`](#split)
 
 <!-- vscode-markdown-toc-config
@@ -73,9 +73,33 @@ const actual = value(item);
 
 ###  1.2. <a name='insertAfter'></a>`insertAfter`
 
-Add an element `item` right after the element pointed to by `list` (`list` is a superset of `item`)
+Peformance: O(1)
 
-What is returned is the newly added `item` integrated into the list
+Add an element `item` right after the element pointed to by `list` (`list` is a superset of `item`).
+
+What is returned is the newly added `item` integrated into the `list`.
+
+decl:
+```typescript
+function insertAfter<T>(list: List<T>, item: Item<T>): List<T>;
+```
+
+Example:
+```typescript
+  let root = from(1); // list with 1 element
+  insertAfter(root, from(2));
+  // "2" will be inserted after "1"
+  insertAfter(root, from(3));
+  // "3" will be inserted after "1" and before "2"
+```
+
+###  1.3. <a name='insertBefore'></a>`insertBefore`
+
+Performance: O(1)
+
+Add an element `item` right before the element pointed to by `list` (`list` is a superset of `item`).
+
+What is returned is the newly added `item` integrated into the `list`.
 
 decl:
 ```typescript
@@ -84,21 +108,87 @@ function insertBefore<T>(list: List<T>, item: Item<T>): List<T>;
 
 Example:
 ```typescript
-  let root = from(1); // list with 1 element
+  const root = from(1); // list with 1 element, root points to element "1"
+  const root2 = insertBefore(root, from(2));  // "2" will be before before "1" and become the new root of the list
 
-  const item2 = insertBefore(root, from(2));
-  // "2" will be inserted before "1"
-  
-  root = item2; // re-asign variable list to the new root of the list
+  // NB: root still points to element "1"
+  // NB: root2 points to element "2"
+  const elt3 = insertBefore(root, from(3)); // "3" will be  inserted before before "1" and after "2"
 ```
-
-###  1.3. <a name='insertBefore'></a>`insertBefore`
 
 ###  1.4. <a name='first'></a>`first`
 
+Find the first element in a linked list by walking back from the element you passed to `first` function.
+
+Performance: O(n)
+
+decl:
+```typescript
+function first<T>(list: List<T>): List<T>;
+```
+
+Example:
+```typescript
+let root = from(3);
+const obj3 =  root; // remember reference to "3"
+root = insertBefore(root, from(2));
+root = insertBofere(root, from(1));
+
+const start =  first(obj3);
+// start will have the same refere"nce to "1" an as root;
+
+first(null);
+// will return null;
+```
+
 ###  1.5. <a name='last'></a>`last`
 
-###  1.6. <a name='count'></a>`count`
+Performance: O(n)
+
+Find the last element in a linked list by walking forward from the element you passed to `last` function.
+
+decl:
+```typescript
+function last<T>(list: List<T>): List<T>;
+```
+
+Example:
+```typescript
+let root = from(3);
+root = insertBefore(root, from(2));
+const obj2 = root; // keep reference to "root"
+root = insertBofere(root, from(1));
+const end =  last(obj2);
+// end will point to "3"
+const end2 = last(root);
+// end2 will point to "3"
+last(null);
+// will return null
+```
+
+
+###  1.6. <a name='countFrom'></a>`countFrom`
+
+Performance: O(n)
+
+Count the number of elements in the linked list **starting from** the position passed as argument to `countFrom`
+
+decl:
+```typescript
+function countFrom<T>(list: List<T>): number;
+```
+
+Example:
+```typescript
+let root = from(3);
+root = insertBefore(root, from(2));
+const obj2 = root; // keep reference to "root"
+root = insertBofere(root, from(1));
+
+countFrom(root); // will count 3 elements
+countFrom(obj2); // will count 2 elements
+conntFrom(null); // will count 0 elements
+```
 
 ###  1.7. <a name='split'></a>`split`
 
