@@ -8,7 +8,7 @@ Fast and small no external dependencies
 
 
 ```bash
-npm i @mangos/list
+npm i @mangos/linked-list
 ```
 
 <!-- vscode-markdown-toc -->
