@@ -87,7 +87,7 @@ export function value<T>(itm: Item<T>): T {
 	return itm.value;
 }
 
-export function snip<T>(item: Item<T> | List<T>): List<T> {
+export function splice<T>(item: Item<T> | List<T>): List<T> {
 	if (item === null) {
 		return null;
 	}
