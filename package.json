@@ -1,6 +1,6 @@
 {
   "name": "@mangos/linked-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "single-linked-list",
   "keywords": [
     "list",
