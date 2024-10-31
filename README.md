@@ -4,6 +4,9 @@
 A double linked list library.
 Fast and small no external dependencies
 
+<a href="./LICENSE">LICENSE MIT</a>
+
+
 ```bash
 npm i @mangos/list
 ```
