@@ -19,7 +19,7 @@
   "sideEffects": false,
   "type": "module",
   "exports": {
-    "import": "./dist/esm/index.mjs",
+    "import": "./dist/index.mjs",
     "types": "./dist/types/index.d.ts"
   },
   "types": "./dist/types/index.d.ts",
